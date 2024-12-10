@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<!-- DOM 트리
+: DOM은 Document Object Model의 약자
+HTML, XML 문서를 프로그래밍적으로 다룰 수 있도록 문서를 객체로 표현한 모델 -->
+<!-- <body>
+├── <h1>
+│       "숫자를 입력하세요"
+├── <form> (action="Add3", name="frm", onsubmit="return chk()")
+│       ├── "숫자: "
+│       ├── <input> (type="text", name="num")
+│       ├── <p></p>
+│       ├── "문자: "
+│       ├── <input> (type="text", name="han")
+│       ├── <p></p>
+│       └── <input> (type="submit", value="확인") -->
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	function chk() {
+
+		 
+		if (!frm.num.value) {
+			alert("숫자 입력 안하니?");
+			frm.num.focus();
+			return false;
+		}
+		// isNaN = is not a number: 숫자가 아닐 때
+		// frm.num.value : dom구조 
+		if(isNaN(frm.num.value)){
+			alert("숫자가 뭔지 모르니? 헐!");
+			frm.num.focus();
+			frm.num.value = ""; //입력된 글자 지우기
+			return false;
+		}
+		return true;
+	}
+</script>
+</head>
+<body>
+	<h1>숫자를 입력하세요</h1>
+	<!-- action에 아무것도 안치면 메소드가 get 방식 -->
+	<!-- name 속성은 자바스크립트에서 넘어갈 경우가 있을 때 사용 -->
+	<form action="Add3" name="frm" method="post" onsubmit="return chk()">
+		<!-- 파라미터 이름으로 num과 han을 가져감 -->
+		숫자: <input type="text" name="num"><p>
+		문자: <input type="text" name="han"><p>
+			<input type="submit" value="확인">
+	</form>
+
+
+</body>
+</html>
